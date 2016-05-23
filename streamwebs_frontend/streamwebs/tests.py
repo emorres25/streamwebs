@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import datetime
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -70,6 +71,7 @@ class UserTestCase(TestCase):
         except:
             self.fail('An exception was raised.')
 
+
 class UserFormTestCase(TestCase): 
 
     def test_valid_data(self):
@@ -82,6 +84,21 @@ class UserFormTestCase(TestCase):
         bad_data = {'username': '!!!', 'email': 'bad@example.com', 'password':'password', 'first_name': 'Bad', 'last_name': 'Data',}
         bad_user_form = UserForm(data=bad_data)
         self.assertFalse(bad_user_form.is_valid())
+
+
+class UserProfileFormTestCase(TestCase):
+
+    def test_valid_data(self):
+#        user2 = User.objects.create_user('user2', 'user2@example.com', 'password')
+ #       profile2 = UserProfile.objects.create(user=user2, school='a', birthdate=datetime.date(1999, 4, 1))
+
+#        prof_data = {'school': profile2.school, 'birthdate': profile2.birthdate,}
+#        user_prof_form = UserProfileForm(data=prof_data)
+#        self.assertTrue(user_prof_form.is_valid())
+
+        prof_data = {'school': 'a', 'birthdate': datetime.date(1999, 4, 2),}
+        user_prof_form = UserProfileForm(data=prof_data)
+        self.assertTrue(user_prof_form.is_valid())
 
     
     
