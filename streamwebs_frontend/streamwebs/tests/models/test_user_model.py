@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 import datetime
 from django.test import TestCase
 from django.contrib.auth.models import User
