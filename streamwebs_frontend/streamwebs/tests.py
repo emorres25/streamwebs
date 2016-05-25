@@ -7,9 +7,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from streamwebs.models import UserProfile, validate_UserProfile_school, validate_UserProfile_birthdate
 
-#for testing forms:
-from streamwebs.forms import UserForm, UserProfileForm
-
 # Create your tests here.
 
 class UserTestCase(TestCase):
@@ -70,35 +67,3 @@ class UserTestCase(TestCase):
             validate_UserProfile_birthdate(profile13)
         except:
             self.fail('An exception was raised.')
-
-
-class UserFormTestCase(TestCase): 
-
-    def test_valid_data(self):
-        data = {'username': 'poodle', 'email': 'poodle@example.com', 'password': 'password', 'first_name': 'Poodle', 'last_name': 'Poodleson',}
-        user_form = UserForm(data=data)
-        self.assertTrue(user_form.is_bound)
-        self.assertTrue(user_form.is_valid())
-
-    def test_invalid_data(self):
-        bad_data = {'username': '!!!', 'email': 'bad@example.com', 'password':'password', 'first_name': 'Bad', 'last_name': 'Data',}
-        bad_user_form = UserForm(data=bad_data)
-        self.assertFalse(bad_user_form.is_valid())
-
-
-class UserProfileFormTestCase(TestCase):
-
-    def test_valid_data(self):
-#        user2 = User.objects.create_user('user2', 'user2@example.com', 'password')
- #       profile2 = UserProfile.objects.create(user=user2, school='a', birthdate=datetime.date(1999, 4, 1))
-
-#        prof_data = {'school': profile2.school, 'birthdate': profile2.birthdate,}
-#        user_prof_form = UserProfileForm(data=prof_data)
-#        self.assertTrue(user_prof_form.is_valid())
-
-        prof_data = {'school': 'a', 'birthdate': datetime.date(1999, 4, 2),}
-        user_prof_form = UserProfileForm(data=prof_data)
-        self.assertTrue(user_prof_form.is_valid())
-
-    
-    
