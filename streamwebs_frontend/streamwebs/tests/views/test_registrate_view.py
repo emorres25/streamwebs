@@ -33,4 +33,4 @@ class RegistrateTestCase(TestCase):
         profile_form_response = self.client.post(reverse('streamwebs:register'), {'school': ('a'), 'birthdate': '1995-11-10'})
         self.assertEqual(user_form_response.status_code, 200)
         self.assertEqual(profile_form_response.status_code, 200)
-        self.assertContains(profile_form_response, 'You have successfully created a StreamWebs account.')
+        self.assertTrue(profile_form_response.context['registered'])

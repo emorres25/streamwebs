@@ -36,7 +36,7 @@ def register(request):
     return render_to_response(
             'streamwebs/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}, context)
-    
+
 #    return render_to_response(
 #        'streamwebs/register.html',
 #        {'registered': registered}, context)
