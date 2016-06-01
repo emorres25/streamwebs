@@ -33,9 +33,13 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
+
+    context.push({'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
+    print context
+
     return render_to_response(
-            'streamwebs/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}, context)
+            'streamwebs/register.html', context)
 
 #    return render_to_response(
 #        'streamwebs/register.html',
