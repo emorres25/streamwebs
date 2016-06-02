@@ -1,5 +1,4 @@
-from django.shortcuts import render, render_to_response
-from django.template.loader import render_to_string
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 
@@ -9,6 +8,7 @@ from streamwebs.forms import UserForm, UserProfileForm
 # Create your views here.
 def index(request):
     return HttpResponse("Hey, you've reached the index.")
+
 
 def register(request):
     context = RequestContext(request)
@@ -26,7 +26,7 @@ def register(request):
             profile.user = user
             profile.save()
             registered = True
-        
+
         else:
             print user_form.errors, profile_form.errors
 
@@ -34,16 +34,13 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-
-    context.push({'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
-
-    print context
+    context.push(
+            {
+                'user_form': user_form,
+                'profile_form': profile_form,
+                'registered': registered
+            }
+    )
 
     return render_to_response(
             'streamwebs/register.html', context)
-
-#    return render_to_response(
-#        'streamwebs/register.html',
-#        {'registered': registered}, context)
- 
- 
