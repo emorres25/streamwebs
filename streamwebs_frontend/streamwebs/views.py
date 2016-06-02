@@ -5,6 +5,7 @@ from django.template import RequestContext
 
 from streamwebs.forms import UserForm, UserProfileForm
 
+
 # Create your views here.
 def index(request):
     return HttpResponse("Hey, you've reached the index.")

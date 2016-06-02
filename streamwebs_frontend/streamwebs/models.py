@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 import datetime
 
-from django.db import models
+from django.contrib.gis.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 # from django.utils.translation import ugettext_lazy as _
@@ -21,6 +22,16 @@ class Site(models.Model):
     site_type = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
     site_slug = models.SlugField(blank=True)
+
+    # Geo Django fields to store a point
+    location = models.PointField(null=True, blank=True)
+    objects = models.GeoManager()
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 def validate_UserProfile_school(school):
