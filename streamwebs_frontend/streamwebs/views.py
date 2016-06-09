@@ -44,3 +44,9 @@ def register(request):
 
     return render_to_response(
             'streamwebs/register.html', context)
+
+
+def login(request):
+    context = RequestContext(request)
+
+    return render_to_response('streamwebs/login.html', {}, context)
