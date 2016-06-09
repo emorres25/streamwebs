@@ -1,7 +1,8 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from streamwebs.forms import UserForm, UserProfileForm
 
@@ -64,6 +65,7 @@ def user_login(request):
             return HttpResponse('Invalid credentials')
     else:
         return render_to_response('streamwebs/login.html', {}, context)
+
 
 @login_required
 def user_logout(request):
