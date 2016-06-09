@@ -64,3 +64,8 @@ def user_login(request):
             return HttpResponse('Invalid credentials')
     else:
         return render_to_response('streamwebs/login.html', {}, context)
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/streamwebs/')
