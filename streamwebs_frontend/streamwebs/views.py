@@ -5,8 +5,8 @@ from django.shortcuts import render
 
 from streamwebs.forms import UserForm, UserProfileForm
 
-# coding=UTF-8
 
+# coding=UTF-8
 # Create your views here.
 def index(request):
     return HttpResponse("Hey, you've reached the index.")
