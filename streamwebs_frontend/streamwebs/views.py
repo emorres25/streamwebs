@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -6,7 +8,6 @@ from django.shortcuts import render
 from streamwebs.forms import UserForm, UserProfileForm
 
 
-# coding=UTF-8
 # Create your views here.
 def index(request):
     return HttpResponse("Hey, you've reached the index.")
