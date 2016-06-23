@@ -10,7 +10,8 @@ from streamwebs.forms import UserForm, UserProfileForm
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hey, you've reached the index.")
+    # return HttpResponse("Hey, you've reached the index.")
+    return render(request, 'streamwebs/index.html', {})
 
 
 def register(request):
