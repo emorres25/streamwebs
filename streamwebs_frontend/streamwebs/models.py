@@ -257,7 +257,7 @@ class PhotoPoint(models.Model):
     photo_filename = models.CharField(max_length=255, blank=True)
     notes = models.TextField(blank=True)
 
-#    objects = PhotoPointManager()
+    photo_points = PhotoPointManager()
 
     def __str__(self):
         return self.site.site_name
