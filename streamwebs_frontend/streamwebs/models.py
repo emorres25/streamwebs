@@ -230,3 +230,27 @@ class Water_Quality(models.Model):
     class Meta:
         verbose_name = 'Water Quality'
         verbose_name_plural = 'Water Quality'
+
+
+class PhotoPoint(models.Model):
+    compass_bearing = models.DecimalField(max_digits=5, decimal_places=2)
+    distance_feet = models.PositiveSmallIntegerField(blank=True, null=True)
+    # Make sure later (validator) that max inches is 12, etc.
+    distance_inches = models.PositiveSmallIntegerField(
+        default=0, blank=True, null=True)
+    camera_height_feet = models.PositiveSmallIntegerField(
+        blank=True, null=True)
+    camera_height_inches = models.PositiveSmallIntegerField(
+        default=0, blank=True, null=True)
+    # photo filename: necessary??
+    photo_filename = models.CharField(max_length=255, blank=True)
+    notes = models.TextField(blank=True)
+
+#    objects = PhotoPointManager()
+
+    def __str__(self):
+        return self.site.site_name
+
+    class Meta:
+        verbose_name = 'Photo Point'
+        verbose_name_plural = 'Photo Points'
