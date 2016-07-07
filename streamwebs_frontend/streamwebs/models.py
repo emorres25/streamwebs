@@ -241,7 +241,7 @@ class PhotoPointManager(models.Manager):
 
 
 class PhotoPoint(models.Model):
-    pp_date = models.DateField()
+    pp_date = models.DateField(default=datetime.date.today)
     compass_bearing = models.DecimalField(max_digits=5, decimal_places=2)
     distance_feet = models.PositiveSmallIntegerField(blank=True, null=True)
     # Make sure later (validator) that max inches is 12, etc.
@@ -263,4 +263,24 @@ class PhotoPoint(models.Model):
 
     class Meta:
         verbose_name = 'Photo Point'
+        verbose_name_plural = 'Photo Points'
+
+
+class CameraPoint(models.Model):
+    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    cp_date = models.DateField(default=datetime.date.today)
+    taken_by = models.CharField(max_length=255, blank=True)
+    latitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
+    longitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
+    map_datum = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
+    photo_pt_1 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_1')
+    photo_pt_2 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_2')
+    photo_pt_3 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_3')
+
+    def __str__(self):
+        return self.site.site_name
+
+    class Meta:
+        verbose_name = 'Camera Point'
         verbose_name_plural = 'Photo Points'
