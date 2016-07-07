@@ -21,7 +21,7 @@ class SiteTestCase(TestCase):
 
             # Datasheets
             'water_quality': models.ManyToOneRel, 
-            'camerapoint': models.ManyToOneRel
+            'camerapoint': models.ManyToOneRel  # "Photo Point Monitoring"
         }
 
         self.optional_fields = {

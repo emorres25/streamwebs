@@ -6,7 +6,6 @@ from django.contrib.gis.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-# from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 
@@ -267,20 +266,20 @@ class PhotoPoint(models.Model):
 
 
 class CameraPoint(models.Model):
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
     cp_date = models.DateField(default=datetime.date.today)
-    taken_by = models.CharField(max_length=255, blank=True)
+    created_by = models.CharField(max_length=255, blank=True)
     latitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
     longitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
     map_datum = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
-    photo_pt_1 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_1')
-    photo_pt_2 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_2')
-    photo_pt_3 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_3')
+    photo_pt_1 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_1', null=True)
+    photo_pt_2 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_2', null=True)
+    photo_pt_3 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_3', null=True)
 
     def __str__(self):
         return self.site.site_name
 
     class Meta:
         verbose_name = 'Camera Point'
-        verbose_name_plural = 'Photo Points'
+        verbose_name_plural = 'Camera Points'
