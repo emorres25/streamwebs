@@ -234,9 +234,9 @@ class Water_Quality(models.Model):
 
 class PhotoPointManager(models.Manager):
     
-    def create_photo_point(self, pp_date, compass_bearing, distance_feet,
-                           distance_inches, camera_height_feet,
-                           camera_height_inches, photo_filename, photo, notes):
+    def create_photo_point(self, pp_date, compass_bearing, distance_feet=None,
+                           distance_inches=None, camera_height_feet=None,
+                           camera_height_inches=None, photo_filename=None, photo=None, notes=None):
         return self.create(pp_date=pp_date, compass_bearing=compass_bearing, distance_feet=None, distance_inches=None, camera_height_feet=None, camera_height_inches=None, photo_filename=None, photo=None, notes=None) 
 
 
