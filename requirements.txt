@@ -1,6 +1,7 @@
 Django
 Jinja2
 MarkupSafe
+Pillow
 PyYAML
 Pygments
 Sphinx
