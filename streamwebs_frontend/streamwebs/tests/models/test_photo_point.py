@@ -9,6 +9,7 @@ class PhotoPointTestCase(TestCase):
 
     def setUp(self):
         self.expected_fields = {
+            'camera_point': models.ForeignKey,
             'pp_date': models.DateField,
             'compass_bearing': models.DecimalField,
             'distance_feet': models.PositiveSmallIntegerField,
@@ -20,9 +21,7 @@ class PhotoPointTestCase(TestCase):
             'notes': models.TextField,
             'id': models.AutoField,
 
-            'photo_pt_1': models.ManyToOneRel,
-            'photo_pt_2': models.ManyToOneRel,
-            'photo_pt_3': models.ManyToOneRel
+            'camera_point_id': models.ForeignKey
         }
 
         self.optional_fields = {
@@ -58,7 +57,8 @@ class PhotoPointTestCase(TestCase):
             (field.name,) for field in PhotoPoint._meta.get_fields()
             if not (field.many_to_one and field.related_model is None)
             )))
-        self.assertEqual(sorted(pp_fields), sorted(self.expected_fields.keys()))
+        self.assertEqual(sorted(pp_fields),
+                         sorted(self.expected_fields.keys()))
 
     def test_optional_fields(self):
         apps.get_model('streamwebs', 'photopoint')

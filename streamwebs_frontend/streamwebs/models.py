@@ -232,51 +232,28 @@ class Water_Quality(models.Model):
         verbose_name_plural = 'Water Quality'
 
 
-class PhotoPointManager(models.Manager):
-    
-    def create_photo_point(self, pp_date, compass_bearing, distance_feet=None,
-                           distance_inches=None, camera_height_feet=None,
-                           camera_height_inches=None, photo_filename=None, photo=None, notes=None):
-        return self.create(pp_date=pp_date, compass_bearing=compass_bearing, distance_feet=None, distance_inches=None, camera_height_feet=None, camera_height_inches=None, photo_filename=None, photo=None, notes=None) 
+class CameraPointManager(models.Manager):
 
-
-class PhotoPoint(models.Model):
-    pp_date = models.DateField(default=datetime.date.today)
-    compass_bearing = models.DecimalField(max_digits=5, decimal_places=2)
-    distance_feet = models.PositiveSmallIntegerField(blank=True, null=True)
-    # Make sure later (validator) that max inches is 12, etc.
-    distance_inches = models.PositiveSmallIntegerField(
-        default=0, blank=True, null=True)
-    camera_height_feet = models.PositiveSmallIntegerField(
-        blank=True, null=True)
-    camera_height_inches = models.PositiveSmallIntegerField(
-        default=0, blank=True, null=True)
-    # photo filename: necessary??
-    photo_filename = models.CharField(max_length=255, blank=True)
-    photo = models.ImageField(blank=True, null=True)
-    notes = models.TextField(blank=True)
-
-    photo_points = PhotoPointManager()
-
-    def __str__(self):
-        return self.site.site_name
-
-    class Meta:
-        verbose_name = 'Photo Point'
-        verbose_name_plural = 'Photo Points'
+    def create_camera_point(self, site, cp_date, created_by='', latitude=None,
+                            longitude=None, map_datum=None, description=''):
+        
+        return self.create(site=site, cp_date=cp_date, created_by=created_by,
+                           latitude=latitude, longitude=longitude,
+                           map_datum=map_datum, description=description)
 
 
 class CameraPoint(models.Model):
     site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
     cp_date = models.DateField(default=datetime.date.today)
     created_by = models.CharField(max_length=255, blank=True)
-    latitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
-    longitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, blank=True, null=True)
+    latitude = models.DecimalField(default=0, max_digits=5, decimal_places=2, 
+                                   blank=True, null=True)
+    longitude = models.DecimalField(default=0, max_digits=5, decimal_places=2,
+                                    blank=True, null=True)
     map_datum = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
-    photo_pt_1 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_1', null=True)
-    photo_pt_2 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_2', null=True)
-    photo_pt_3 = models.ForeignKey(PhotoPoint, on_delete=models.CASCADE, related_name='photo_pt_3', null=True)
+
+    camera_points = CameraPointManager()
 
     def __str__(self):
         return self.site.site_name
@@ -284,6 +261,52 @@ class CameraPoint(models.Model):
     class Meta:
         verbose_name = 'Camera Point'
         verbose_name_plural = 'Camera Points'
+
+
+class PhotoPointManager(models.Manager):
+    
+    def create_photo_point(self, camera_point, pp_date, compass_bearing,
+                           distance_feet=None, distance_inches=None,
+                           camera_height_feet=None, camera_height_inches=None,
+                           photo_filename=None, photo=None, notes=None):
+
+        return self.create(camera_point=camera_point, pp_date=pp_date,
+                           compass_bearing=compass_bearing,
+                           distance_feet=distance_feet,
+                           distance_inches=distance_inches,
+                           camera_height_feet=camera_height_feet,
+                           camera_height_inches=camera_height_inches,
+                           photo_filename=photo_filename, photo=photo,
+                           notes=notes) 
+
+
+class PhotoPoint(models.Model):
+    camera_point = models.ForeignKey(CameraPoint, on_delete=models.CASCADE,
+                                     null=True, related_name='camera_point')
+    pp_date = models.DateField(default=datetime.date.today)
+    compass_bearing = models.DecimalField(max_digits=5, decimal_places=2)
+    distance_feet = models.PositiveSmallIntegerField(blank=True, null=True)
+    distance_inches = models.PositiveSmallIntegerField(default=0, blank=True, 
+                                                       null=True)
+    camera_height_feet = models.PositiveSmallIntegerField(blank=True,
+                                                          null=True)
+    camera_height_inches = models.PositiveSmallIntegerField(default=0,
+                                                            blank=True,
+                                                            null=True)
+    photo_filename = models.CharField(max_length=255, blank=True)
+    photo = models.ImageField(blank=True, null=True)
+    notes = models.TextField(blank=True)
+
+    photo_points = PhotoPointManager()
+
+    def __str__(self):
+        return (self.camera_point.site.site_name + ' camera point ' +
+                str(self.camera_point.id))
+
+    class Meta:
+        verbose_name = 'Photo Point'
+        verbose_name_plural = 'Photo Points'
+
 
 @python_2_unicode_compatible
 class Macroinvertebrates(models.Model):
