@@ -246,9 +246,9 @@ class CameraPoint(models.Model):
     site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
     cp_date = models.DateField(default=datetime.date.today)
     created_by = models.CharField(max_length=255, blank=True)
-    latitude = models.DecimalField(default=0, max_digits=5, decimal_places=2,
+    latitude = models.DecimalField(default=0, max_digits=9, decimal_places=6,
                                    blank=True, null=True)
-    longitude = models.DecimalField(default=0, max_digits=5, decimal_places=2,
+    longitude = models.DecimalField(default=0, max_digits=9, decimal_places=6,
                                     blank=True, null=True)
     map_datum = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
