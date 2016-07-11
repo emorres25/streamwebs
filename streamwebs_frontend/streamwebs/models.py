@@ -256,7 +256,8 @@ class CameraPoint(models.Model):
     camera_points = CameraPointManager()
 
     def __str__(self):
-        return self.site.site_name
+        return ('Camera point ' + str(self.id) + ' for site ' +
+                self.site.site_name)
 
     class Meta:
         verbose_name = 'Camera Point'
@@ -300,7 +301,8 @@ class PhotoPoint(models.Model):
     photo_points = PhotoPointManager()
 
     def __str__(self):
-        return (self.camera_point.site.site_name)
+        return ('Photo point ' + str(self.id) + ' for camera point ' +
+                str(self.camera_point.id))
 
     class Meta:
         verbose_name = 'Photo Point'
