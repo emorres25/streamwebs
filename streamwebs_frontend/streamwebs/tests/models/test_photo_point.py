@@ -14,7 +14,7 @@ class PhotoPointTestCase(TestCase):
             'compass_bearing': models.PositiveSmallIntegerField,
             'distance': models.DecimalField,
             'camera_height': models.DecimalField,
-            'photo_filename': models.CharField, # still necessary? 
+            'photo_filename': models.CharField,  # still necessary?
             'photo': models.ImageField,
             'notes': models.TextField,
             'id': models.AutoField,
