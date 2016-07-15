@@ -22,7 +22,7 @@ class SiteTestCase(TestCase):
             # Datasheets
             'water_quality': models.ManyToOneRel,
             'macroinvertebrates': models.ManyToOneRel,
-            'camerapoint': models.ManyToOneRel  # "Photo Point Monitoring"
+            'camerapoint': models.ManyToOneRel,  # "Photo Point Monitoring"
             'ripariantransect': models.ManyToOneRel,
         }
 
