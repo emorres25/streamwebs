@@ -23,6 +23,7 @@ class SiteTestCase(TestCase):
             'water_quality': models.ManyToOneRel,
             'macroinvertebrates': models.ManyToOneRel,
             'camerapoint': models.ManyToOneRel  # "Photo Point Monitoring"
+            'ripariantransect': models.ManyToOneRel,
         }
 
         self.optional_fields = {

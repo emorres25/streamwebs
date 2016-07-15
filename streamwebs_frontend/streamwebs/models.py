@@ -7,6 +7,7 @@ from django.contrib.gis.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 
@@ -53,15 +54,13 @@ def validate_UserProfile_school(school):
 def validate_UserProfile_birthdate(birthdate):
     today = datetime.datetime.now()
     if birthdate.year > today.year - 13:
-        raise ValidationError(
-            'You must have been born before %s' % (today.year-13)
-        )
+        raise ValidationError('You must be at least 13')
     elif birthdate.year == today.year - 13:
         if birthdate.month > today.month:
-            raise ValidationError('You are not yet 13 (month)')
+            raise ValidationError('You must be at least 13')
         elif birthdate.month == today.month:
             if birthdate.day > today.day:
-                raise ValidationError('You are not yet 13 (days)')
+                raise ValidationError('You must be at least 13')
 
 
 class UserProfile(models.Model):
@@ -107,6 +106,14 @@ class WQSampleManager(models.Manager):
         return info
 
 
+def validate_pH(ph):
+    if not(0 <= ph and ph <= 14):
+        raise ValidationError(
+            _('%(ph)s is not 0-14.'),
+            params={'ph': ph},
+            )
+
+
 @python_2_unicode_compatible
 class WQ_Sample(models.Model):
     NOT_ACCESSED = 'N/A'
@@ -129,7 +136,8 @@ class WQ_Sample(models.Model):
                                            decimal_places=2)
     oxygen_tool = models.CharField(max_length=255, choices=TOOL_CHOICES,
                                    default=TOOL_CHOICES[0])
-    pH = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    pH = models.DecimalField(validators=[validate_pH], default=0, max_digits=5,
+                             decimal_places=2)
     pH_tool = models.CharField(max_length=255, choices=TOOL_CHOICES,
                                default=TOOL_CHOICES[0])
     turbidity = models.DecimalField(default=0, max_digits=5, decimal_places=2)
@@ -346,3 +354,79 @@ class Macroinvertebrates(models.Model):
     class Meta:
         verbose_name = 'Macroinvertebrate'
         verbose_name_plural = 'Macroinvertebrates'
+
+
+class TransectZoneManager(models.Manager):
+    """
+    Manager for the TransectZone model.
+    """
+    def create_zone(self, conifers=0, hardwoods=0, shrubs=0, comments=''):
+        info = self.create(conifers=conifers, hardwoods=hardwoods,
+                           shrubs=shrubs, comments=comments)
+        return info
+
+
+class TransectZone(models.Model):
+    """
+    Each Riparian Transect datasheet requires five zones.
+    """
+    conifers = models.PositiveSmallIntegerField(default=0)
+    hardwoods = models.PositiveSmallIntegerField(default=0)
+    shrubs = models.PositiveSmallIntegerField(default=0)
+    comments = models.TextField(blank=True)
+
+    zones = TransectZoneManager()
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = 'Zone'
+        verbose_name_plural = 'Zones'
+
+
+class RipTransectManager(models.Manager):
+    """
+    Manager for the RiparianTransect model/datasheet.
+    """
+    def create_transect(self, school, date_time, site, zone_1, zone_2, zone_3,
+                        zone_4, zone_5, weather='', slope=None,
+                        notes=''):
+        return self.create(school=school, date_time=date_time, site=site,
+                           zone_1=zone_1, zone_2=zone_2, zone_3=zone_3,
+                           zone_4=zone_4, zone_5=zone_5, weather=weather,
+                           slope=slope, notes=notes)
+
+
+class RiparianTransect(models.Model):
+    """
+    This model corresponds to the Riparian Transect data sheet and has a one-to
+    -one relationship with its specified Site.
+    """
+    school = models.CharField(max_length=255)
+    date_time = models.DateTimeField(default=timezone.now)
+    weather = models.CharField(max_length=255, blank=True)
+    site = models.ForeignKey(Site, null=True, on_delete=models.CASCADE)
+    slope = models.DecimalField(blank=True, null=True, max_digits=5,
+                                decimal_places=3)
+    notes = models.TextField(blank=True)
+
+    zone_1 = models.ForeignKey(TransectZone, on_delete=models.CASCADE,
+                               related_name='zone_1', null=True)
+    zone_2 = models.ForeignKey(TransectZone, on_delete=models.CASCADE,
+                               related_name='zone_2', null=True)
+    zone_3 = models.ForeignKey(TransectZone, on_delete=models.CASCADE,
+                               related_name='zone_3', null=True)
+    zone_4 = models.ForeignKey(TransectZone, on_delete=models.CASCADE,
+                               related_name='zone_4', null=True)
+    zone_5 = models.ForeignKey(TransectZone, on_delete=models.CASCADE,
+                               related_name='zone_5', null=True)
+
+    transects = RipTransectManager()
+
+    def __str__(self):
+        return self.site.site_name
+
+    class Meta:
+        verbose_name = 'Riparian Transect'
+        verbose_name_plural = 'Riparian Transects'

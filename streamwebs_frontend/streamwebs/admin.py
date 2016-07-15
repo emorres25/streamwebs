@@ -10,6 +10,8 @@ from .models import WQ_Sample
 from .models import CameraPoint
 from .models import PhotoPoint
 from .models import Macroinvertebrates
+from .models import TransectZone
+from .models import RiparianTransect
 
 admin.site.register(Site)
 admin.site.register(Water_Quality)
@@ -17,6 +19,8 @@ admin.site.register(WQ_Sample)
 admin.site.register(CameraPoint)
 admin.site.register(PhotoPoint)
 admin.site.register(Macroinvertebrates)
+admin.site.register(TransectZone)
+admin.site.register(RiparianTransect)
 
 
 # The following will add a profile model's files to the user page in the
