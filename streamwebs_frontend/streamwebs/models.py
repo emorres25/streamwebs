@@ -361,13 +361,6 @@ class WQ_Sample(models.Model):
     MANUAL = _('Manual')
     TOOL_CHOICES = ((MANUAL, _('Manual')), (VERNIER, _('Vernier')),)
 
-    # These are required fields
-    water_quality = models.ForeignKey(
-        Water_Quality,
-        on_delete=models.CASCADE,
-        related_name='water_quality',
-        null=True
-    )
     DEFAULT = '(Select a sample number)'
     ONE = 1
     TWO = 2
