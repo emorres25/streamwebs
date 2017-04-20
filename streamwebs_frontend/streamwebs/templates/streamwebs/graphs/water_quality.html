@@ -20,11 +20,14 @@
 </script>
 {% endblock %}
 
-{% block body_title %}
+<!--{% block body_title %}
     <a href="/sites/{{site.site_slug}}">{{site.site_name}}</a>: {% trans "Water Quality" %}
-{% endblock %}
+{% endblock %}-->
 
 {% block content %}
+<h2 align="center">
+    <a href="/sites/{{site.site_slug}}">{{site.site_name}}</a>: {% trans "Water Quality" %}
+</h2>
 <form action=""><div id="dates">
         <p>{% trans "Date Range:" %}</p>
         <label for="date-start">{% trans "After" %}</label>

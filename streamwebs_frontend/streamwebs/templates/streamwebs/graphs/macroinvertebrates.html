@@ -11,12 +11,14 @@
 </style>
 {% endblock %}
 
-
-{% block body_title %}
+<!--{% block body_title %}
     <a href="/sites/{{site.site_slug}}">{{site.site_name}}</a>: {% trans "Macroinvertebrates" %}
-{% endblock %}
+{% endblock %}-->
 
 {% block content %}
+<h2 align="center">
+    <a href="/sites/{{site.site_slug}}">{{site.site_name}}</a>: {% trans "Macroinvertebrates" %}
+</h2>
 <div class="container">
     <div class="row">
         <form action="">
