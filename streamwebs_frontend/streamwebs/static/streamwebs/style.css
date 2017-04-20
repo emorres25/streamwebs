@@ -139,6 +139,8 @@ nav {
 nav a.btn,
 nav ul#languages {
     margin-left: 10px;
+    padding-left: 1em;
+    padding-right: 0.5em;
 }
 
 .brand-logo a {
