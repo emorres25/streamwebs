@@ -916,6 +916,8 @@ def admin_site_statistics(request):
         'schools': {'total': len(all_schools), 'schools': all_schools},
         'start': start,
         'end': end,
+        'pages': len(all_sites)/10+1,
+        'data_len_range': range(2, len(all_sites)/10+2),
         }
     )
 
