@@ -1096,8 +1096,8 @@ class Resource(models.Model):
         max_length=255, blank=False, choices=TYPE_CHOICES
     )
     # bad way to handle upload_to!  It should be based on res_type
-    downloadable = models.FileField(upload_to='assets/', blank=True)
-    thumbnail = models.ImageField(upload_to='assets/thumbnails/', blank=True)
+    downloadable = models.FileField(upload_to='resources/', blank=True)
+    thumbnail = models.ImageField(upload_to='resources/thumbnails/', blank=True)
     sort_order = models.PositiveSmallIntegerField(default=1000)
 
     objects = models.Manager()

@@ -1,0 +1,184 @@
+[
+  {
+    "model": "streamwebs.resource",
+    "pk": 1,
+    "fields": {
+      "name": "Water Quality",
+      "res_type": "data_sheet",
+      "downloadable": "resources/WaterQuality_OSU.pdf",
+      "thumbnail": "resources/thumbnails/waterquality_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 2,
+    "fields": {
+      "name": "Aquatic Macroinvertebrates",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Macros_OSU.pdf",
+      "thumbnail": "resources/thumbnails/macros_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 3,
+    "fields": {
+      "name": "Riparian & Aquatic Survey",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Riparian_AquaticSurvey_OSU.pdf",
+      "thumbnail": "resources/thumbnails/riparianaquatic_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 4,
+    "fields": {
+      "name": "Riparian Transect",
+      "res_type": "data_sheet",
+      "downloadable": "resources/RiparianTransect_OSU.pdf",
+      "thumbnail": "resources/thumbnails/ripariantransect_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 5,
+    "fields": {
+      "name": "Photopoint Monitoring",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Photopoints_OSU.pdf",
+      "thumbnail": "resources/thumbnails/photopoint_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 6,
+    "fields": {
+      "name": "Streamflow",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Streamflow_OSU.pdf",
+      "thumbnail": "resources/thumbnails/streamflow_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 7,
+    "fields": {
+      "name": "Canopy Cover Survey",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Canopy_OSU.pdf",
+      "thumbnail": "resources/thumbnails/canopy_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 8,
+    "fields": {
+      "name": "Invasive Species Mapping",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Invasive_Mapping_OSU.pdf",
+      "thumbnail": "resources/thumbnails/invasive_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 9,
+    "fields": {
+      "name": "Soil Survey",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Soil_Survey_OSU.pdf",
+      "thumbnail": "resources/thumbnails/soil_form_thumb.png"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 10,
+    "fields": {
+      "name": "Pebble Count",
+      "res_type": "data_sheet",
+      "downloadable": "resources/Pebble_Count_OSU.pdf",
+      "thumbnail": "resources/thumbnails/pebblecount_form_thumb.png"
+    }
+  },
+
+  {
+    "model": "streamwebs.resource",
+    "pk": 11,
+    "fields": {
+      "name": "StreamWebs Student Stewardship Project Field Book",
+      "res_type": "publication",
+      "downloadable": "resources/student_stewardship_project_guide_pg3.4-3.20.pdf",
+      "thumbnail": "resources/thumbnails/Student Stewardship Project Guide COVER_small.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 12,
+    "fields": {
+      "name": "Salmon Watch 10th Edition Curriculum Guide",
+      "res_type": "publication",
+      "downloadable": "resources/sw_2010_teacher_curriculum_guide_final.pdf",
+      "thumbnail": "resources/thumbnails/SW_Cover_smalll.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 13,
+    "fields": {
+      "name": "Salmon Watch 10th Edition Volunteer Resource Packet",
+      "res_type": "publication",
+      "downloadable": "resources/sw_volunteer_resource_packet_2010.pdf",
+      "thumbnail": "resources/thumbnails/SW_Cover_smalll.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 14,
+    "fields": {
+      "name": "1000 Drops Curriculum Guide",
+      "res_type": "publication",
+      "downloadable": "resources/1000 Drops Teacher Guide First Edition WEB.pdf",
+      "thumbnail": "resources/thumbnails/1000drops_cover_small.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 15,
+    "fields": {
+      "name": "Hometown Waters - Marys River",
+      "res_type": "publication",
+      "downloadable": "resources/hometown_waters-marys_river_web.pdf",
+      "thumbnail": "resources/thumbnails/hometown_waters_ud_cover_small.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 16,
+    "fields": {
+      "name": "Hometown Waters - Bear Creek",
+      "res_type": "publication",
+      "downloadable": "resources/hometown_waters-bear_creek_web.pdf",
+      "thumbnail": "resources/thumbnails/hometown_waters_ud_cover_small.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 17,
+    "fields": {
+      "name": "Hometown Waters - Johnson Creek",
+      "res_type": "publication",
+      "downloadable": "resources/hometown_waters-johnson_creek_web.pdf",
+      "thumbnail": "resources/thumbnails/hometown_waters_ud_cover_small.jpg"
+    }
+  },
+  {
+    "model": "streamwebs.resource",
+    "pk": 18,
+    "fields": {
+      "name": "Hometown Waters - Upper Deschutes",
+      "res_type": "publication",
+      "downloadable": "resources/hometown_waters-johnson_creek_web.pdf",
+      "thumbnail": "resources/thumbnails/hometown_waters_ud_cover_small.jpg"
+    }
+  }
+
+]
