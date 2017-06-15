@@ -6,8 +6,12 @@ Developer Documentation
 StreamWebs is built with the Django web framework. You can view and clone the
 StreamWebs Github repository `here <https://github.com/osuosl/streamwebs>`_.
 
-Getting Started
----------------
+Intro to the Workflow
+---------------------
+StreamWebs is developed in a docker dev environment.
+(insert a brief description of what this means)
+
+Assuming that you have Docker and its dependencies already set up... here's what do.
 
 
 Testing
