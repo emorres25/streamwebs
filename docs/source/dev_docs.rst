@@ -6,6 +6,10 @@ Developer Documentation
 StreamWebs is built with the Django web framework. You can view and clone the
 StreamWebs Github repository `here <https://github.com/osuosl/streamwebs>`_.
 
+Getting Started
+---------------
+
+
 Testing
 -------
 The tests directory is located in streamwebs_frontend/streamwebs/ and contains
