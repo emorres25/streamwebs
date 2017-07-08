@@ -1,5 +1,4 @@
 let map;
-
 const path = "m 0,0 c -7.08163,-14.59707 -5.50487,-20.97294 5.18667,-20.97294 " +
            "10.69154,0 12.2683,6.37587 5.18667,20.97294 -2.4156,4.97919 " +
            "-4.74961,9.05306 -5.18667,9.05306 -0.43706,0 -2.77107,-4.07387 " +
@@ -8,12 +7,10 @@ const path = "m 0,0 c -7.08163,-14.59707 -5.50487,-20.97294 5.18667,-20.97294 " 
 const initialize = function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        maxZoom: 10,
-        minZoom: 10,
         center: new google.maps.LatLng(site_location.y, site_location.x),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        disableDefaultUI: true,
-        draggable: false,
+        disableDefaultUI: false,
+        draggable: true,
         clickableIcons: false,
     });
 
