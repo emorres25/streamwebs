@@ -35,11 +35,11 @@ msgstr ""
 
 #: streamwebs/forms.py:35 streamwebs/templates/streamwebs/register.html:27
 msgid "First Name"
-msgstr ""
+msgstr "नाम "
 
 #: streamwebs/forms.py:36 streamwebs/templates/streamwebs/register.html:34
 msgid "Last Name"
-msgstr ""
+msgstr "उपनाम"
 
 #: streamwebs/forms.py:41
 msgid "Passwords do not match"
@@ -100,19 +100,19 @@ msgstr ""
 
 #: streamwebs/models.py:65
 msgid "site name"
-msgstr ""
+msgstr "जगह का नाम "
 
 #: streamwebs/models.py:67
 msgid "site description"
-msgstr ""
+msgstr "जगह के बारे में "
 
 #: streamwebs/models.py:72 streamwebs/models.py:547
 msgid "location"
-msgstr ""
+msgstr "जगह"
 
 #: streamwebs/models.py:74
 msgid "image"
-msgstr ""
+msgstr "चित्र"
 
 #: streamwebs/models.py:169 streamwebs/models.py:172 streamwebs/models.py:175
 msgid "You must be at least 13"
@@ -120,15 +120,15 @@ msgstr ""
 
 #: streamwebs/models.py:182
 msgid "birthdate"
-msgstr ""
+msgstr "जन्म दिनांक "
 
 #: streamwebs/models.py:245
 msgid "Yes"
-msgstr ""
+msgstr "हा "
 
 #: streamwebs/models.py:245
 msgid "No"
-msgstr ""
+msgstr "नहीं "
 
 #: streamwebs/models.py:250
 msgid "Stream/Site name"
