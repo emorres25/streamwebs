@@ -51,6 +51,9 @@ div.header > a.logo {
     left: 40px;
 }
 
+a.logo img{
+  height: 80px;
+}
 nav {
     box-shadow: unset;
 }
