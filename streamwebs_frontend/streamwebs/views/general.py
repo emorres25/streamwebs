@@ -742,6 +742,10 @@ def canopy_cover_edit(request, site_slug):
     )
 
 
+@login_required
+def canopy_cover_edit(request, site_slug, data_id):
+
+
 def camera_point_view(request, site_slug, cp_id):
     """View a site's CP: includes all of its PPs/PPIs"""
     site = Site.objects.filter(active=True).get(site_slug=site_slug)

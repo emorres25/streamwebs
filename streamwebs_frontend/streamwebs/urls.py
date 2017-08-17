@@ -61,7 +61,10 @@ urlpatterns = [
     url(r'^sites/(?P<site_slug>[0-9a-zA-Z-]+)/canopy/(?P<data_id>\d+)/',
         views.canopy_cover_view, name='canopy_cover'),
 
-    url(r'^sites/(?P<site_slug>[0-9a-zA-Z-]+)/canopy/edit',
+    url(r'^sites/(?P<site_slug>[0-9a-zA-Z-]+)/canopy/add/',
+        views.canopy_cover_add, name='canopy_cover_add'),
+
+    url(r'^sites/(?P<site_slug>[0-9a-zA-Z-]+)/canopy/edit/(?P<data_id>\d+)/',
         views.canopy_cover_edit, name='canopy_cover_edit'),
 
     url(r'^sites/(?P<site_slug>[0-9a-zA-Z-]+)/canopy/export/',
