@@ -700,7 +700,7 @@ def canopy_cover_view(request, site_slug, data_id):
 
 
 @login_required
-def canopy_cover_edit(request, site_slug):
+def canopy_cover_add(request, site_slug):
     """
     The view for the submission of a new canopy cover data sheet.
     """
@@ -716,7 +716,7 @@ def canopy_cover_edit(request, site_slug):
     if request.method == 'POST':
         canopy_cover_form = Canopy_Cover_Form(data=request.POST)
 
-        if (canopy_cover_form.is_valid()):
+        if canopy_cover_form.is_valid():
             canopy_cover = canopy_cover_form.save()
             canopy_cover.site = site
             canopy_cover.school = school
@@ -744,6 +744,18 @@ def canopy_cover_edit(request, site_slug):
 
 @login_required
 def canopy_cover_edit(request, site_slug, data_id):
+    site = Site.objects.filter(active=True).get(site_slug=site_slug)
+    canopy_cover = Canopy_Cover.objects.filter(site_id=site.id).get(id=data_id)
+
+    if request.mothod == 'POST':
+        canopy_cover_form = Canopy_Cover_Form(data=request.POST)
+        if canopy_cover_form.is_valid():
+            canopy_cover = canopy_cover_form.save()
+            canopy_cover.site = site
+
+    else:
+        canopy_cover_form = Canopy_Cover_Form(instance)
+
 
 
 def camera_point_view(request, site_slug, cp_id):
