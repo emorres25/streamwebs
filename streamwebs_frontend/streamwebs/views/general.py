@@ -747,14 +747,24 @@ def canopy_cover_edit(request, site_slug, data_id):
     site = Site.objects.filter(active=True).get(site_slug=site_slug)
     canopy_cover = Canopy_Cover.objects.filter(site_id=site.id).get(id=data_id)
 
-    if request.mothod == 'POST':
-        canopy_cover_form = Canopy_Cover_Form(data=request.POST)
-        if canopy_cover_form.is_valid():
-            canopy_cover = canopy_cover_form.save()
-            canopy_cover.site = site
-
+    if request.method == 'POST':
+        form = Canopy_Cover_Form(data=request.POST,
+                                              instance=canopy_cover)
     else:
-        canopy_cover_form = Canopy_Cover_Form(instance)
+        form = Canopy_Cover_Form(initial={'date_time': canopy_cover.date_time,
+                                          'weather': canopy_cover.weather,
+                                          'north_cc': canopy_cover.north_cc,
+                                          'souch_cc': canopy_cover.south_cc,
+                                          'west_cc': canopy_cover.west_cc,})
+
+
+    return render(
+        request,
+        'streamwebs/datasheets/canopy_cover_edit.html', {
+            'canopy_cover_form': form,
+            'site': site
+        }
+    )
 
 
 
